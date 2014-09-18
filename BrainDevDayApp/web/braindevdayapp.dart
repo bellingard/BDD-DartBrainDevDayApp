@@ -49,7 +49,7 @@ void main() {
   });
 
 
-  init();
+  init();  
 }
 
 void init() {
@@ -132,6 +132,7 @@ void updateChoices() {
               emp.choose(p);
               cell.classes.add("chosen");
             }
+            console.text = company.toJSON();
           });
       if (emp.isChosen(p)) {
         cell.classes.add("chosen");

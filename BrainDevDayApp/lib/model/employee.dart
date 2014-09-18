@@ -18,8 +18,10 @@ class Employee {
   
   List<String> getProposals() => this.proposals;
   
-  bool choose(String proposal) => this.choices.add(proposal);
+  Set<String> getChoices() => this.choices;
   
+  bool choose(String proposal) => this.choices.add(proposal);
+    
   bool unchoose(String proposal) => this.choices.remove(proposal);
   
   bool isChosen(String proposal) => this.choices.contains(proposal);

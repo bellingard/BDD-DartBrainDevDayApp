@@ -28,6 +28,18 @@ class Company {
     });
     return proposals;
   }
+  
+  String toJSON() {
+    Map jsonData = new Map();
+    jsonData["name"] = name;
+    jsonData["employees"] = new Map();
+    getEmployees().forEach((e) {
+      jsonData["employees"][e.getName()] = new Map();
+      jsonData["employees"][e.getName()]["choices"] = e.getChoices().toList();
+      jsonData["employees"][e.getName()]["proposals"] = e.getProposals();  
+    });
+    return JSON.encode(jsonData);
+  }
 
   void init() {
     Employee e = new Employee("Simon");
