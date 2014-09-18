@@ -1,4 +1,4 @@
-name: BrainDevDayApp
+name: bdd_lib
 description: Application to define topics and teams for the BDD
 dependencies:
   browser: any

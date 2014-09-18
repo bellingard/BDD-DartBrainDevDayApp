@@ -1,3 +1,5 @@
+part of bdd_lib;
+
 class Employee {
   
   String name;
