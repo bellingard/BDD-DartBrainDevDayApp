@@ -17,6 +17,18 @@ packages:
     description: collection
     source: hosted
     version: "1.0.0"
+  crypto:
+    description: crypto
+    source: hosted
+    version: "0.9.0"
+  http:
+    description: http
+    source: hosted
+    version: "0.11.1+1"
+  http_parser:
+    description: http_parser
+    source: hosted
+    version: "0.0.2+5"
   intl:
     description: intl
     source: hosted
@@ -37,10 +49,18 @@ packages:
     description: petitparser
     source: hosted
     version: "1.2.2"
+  source_span:
+    description: source_span
+    source: hosted
+    version: "1.0.0"
   stack_trace:
     description: stack_trace
     source: hosted
     version: "1.0.2"
+  string_scanner:
+    description: string_scanner
+    source: hosted
+    version: "0.1.0"
   watcher:
     description: watcher
     source: hosted

@@ -2,5 +2,6 @@ name: bdd_lib
 description: Application to define topics and teams for the BDD
 dependencies:
   browser: any
+  http: any
   intl: any
   js: any

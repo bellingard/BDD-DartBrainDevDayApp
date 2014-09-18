@@ -1,9 +1,11 @@
 import 'dart:html';
 import 'package:bdd_lib/bdd_lib.dart';
+import 'package:http/http.dart' as http;
 
-String baseUrl = "http://127.0.0.1:8888";
 
-Company company;
+String baseUrl = "http://127.0.0.1:8080/";
+
+Company company = new Company("SonarSource");
 
 DivElement console = querySelector("#console");
 DivElement employees_list = querySelector("#employees-list");
@@ -17,7 +19,7 @@ TableElement choices = querySelector("#choices");
 
 void main() {
   initUI();
-  initData();
+  updateAfterLoadData();
 }
 
 void initUI() {
@@ -56,24 +58,17 @@ void initUI() {
 
   querySelector('#saveButton').onClick.listen((Event e) {
     console.text = company.toJSON();
-
-    var url = baseUrl + "/save";
-
-    // call the web server asynchronously
-    //var request = HttpRequest.getString(url).then(onDataLoaded);
   });
 
   querySelector('#loadButton').onClick.listen((Event e) {
-    var request = HttpRequest.getString(baseUrl + "/load").then((String responseText) {
-      console.text = responseText;
+    var request = HttpRequest.getString(baseUrl).then((String responseText) {
+      company = Company.fromJSON(responseText);   
+      updateAfterLoadData();
     });
   });
 }
 
-void initData() {
-  company = new Company("SonarSource");
-  company.init();
-
+void updateAfterLoadData() {
   hideEmployeeDetails();
   updateEmployeeList();
   updateChoices();

@@ -29,6 +29,24 @@ class Company {
     return proposals;
   }
   
+  static Company fromJSON(String jsonData) {
+    Map data = JSON.decode(jsonData);
+    Company comp = new Company(data["name"]);
+    
+    Map employees = data["employees"];
+    employees.forEach((k,v) {
+      Employee emp = new Employee(k);
+      comp.addEmployee(emp);
+      
+      List proposals = v["proposals"];
+      proposals.forEach((p) {emp.addProposal(p);});
+      List choices = v["choices"];
+      choices.forEach((c) {emp.choose(c);});
+    });
+    
+    return comp;
+  }
+  
   String toJSON() {
     Map jsonData = new Map();
     jsonData["name"] = name;
