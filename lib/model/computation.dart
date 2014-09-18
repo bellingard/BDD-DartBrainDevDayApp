@@ -18,7 +18,7 @@ class Computation {
     });
     
     if (choicesOk) {
-      print("Every Employee has made a choice");
+      print("Every Employee has made a choice => COMPUTATION can start!!!! ;-)");
     }
   }
   
