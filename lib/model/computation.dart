@@ -12,12 +12,14 @@ class Computation {
     bool choicesOk = true;
     company.getEmployees().forEach((e){
       if (e.getChoices().isEmpty) {
-        print("Employee " + e.getName() + " has make no choice !");
+        print("=================================================");
+        print("Employee " + e.getName() + " has made no choice !");
         choicesOk = false;
       }
     });
     
     if (choicesOk) {
+      print("=================================================");
       print("Every Employee has made a choice => COMPUTATION can start!!!! ;-)");
     }
   }
