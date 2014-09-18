@@ -4,3 +4,4 @@ import 'dart:convert';
 
 part 'model/company.dart';
 part 'model/employee.dart';
+part 'model/computation.dart';

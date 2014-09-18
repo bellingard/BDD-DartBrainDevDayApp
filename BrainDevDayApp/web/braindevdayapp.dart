@@ -2,7 +2,6 @@ import 'dart:html';
 import 'package:bdd_lib/bdd_lib.dart';
 import 'package:http/http.dart' as http;
 
-
 String baseUrl = "http://127.0.0.1:8080/";
 
 Company company = new Company("SonarSource");
@@ -57,8 +56,6 @@ void initUI() {
   });
 
   querySelector('#saveButton').onClick.listen((Event e) {
-    console.text = company.toJSON();
-    
     HttpRequest request = new HttpRequest(); // create a new XHR      
       // add an event handler that is called when the request finishes
       request.onReadyStateChange.listen((_) {
