@@ -58,6 +58,20 @@ void initUI() {
 
   querySelector('#saveButton').onClick.listen((Event e) {
     console.text = company.toJSON();
+    
+    HttpRequest request = new HttpRequest(); // create a new XHR      
+      // add an event handler that is called when the request finishes
+      request.onReadyStateChange.listen((_) {
+        if (request.readyState == HttpRequest.DONE &&
+            (request.status == 200 || request.status == 0)) {
+          // data saved OK.
+          //print(request.responseText); // output the response from the server
+        }
+      });
+
+      // POST the data to the server
+      request.open("POST", baseUrl, async: false);
+      request.send(company.toJSON()); // perform the async POST
   });
 
   querySelector('#loadButton').onClick.listen((Event e) {
