@@ -1,6 +1,8 @@
 import 'dart:html';
 import 'package:bdd_lib/bdd_lib.dart';
 
+String baseUrl = "http://127.0.0.1:8888";
+
 Company company;
 
 DivElement console = querySelector("#console");
@@ -14,7 +16,11 @@ DivElement employee_details = querySelector("#employee-details");
 TableElement choices = querySelector("#choices");
 
 void main() {
+  initUI();
+  initData();
+}
 
+void initUI() {
   new_user_field
       ..onKeyPress.listen((KeyboardEvent e) {
         if (e.keyCode == KeyCode.ENTER) {
@@ -48,11 +54,23 @@ void main() {
     }
   });
 
+  querySelector('#saveButton').onClick.listen((Event e) {
+    console.text = company.toJSON();
 
-  init();  
+    var url = baseUrl + "/save";
+
+    // call the web server asynchronously
+    //var request = HttpRequest.getString(url).then(onDataLoaded);
+  });
+
+  querySelector('#loadButton').onClick.listen((Event e) {
+    var request = HttpRequest.getString(baseUrl + "/load").then((String responseText) {
+      console.text = responseText;
+    });
+  });
 }
 
-void init() {
+void initData() {
   company = new Company("SonarSource");
   company.init();
 
@@ -132,7 +150,6 @@ void updateChoices() {
               emp.choose(p);
               cell.classes.add("chosen");
             }
-            console.text = company.toJSON();
           });
       if (emp.isChosen(p)) {
         cell.classes.add("chosen");
