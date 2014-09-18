@@ -39,7 +39,6 @@ h1 {
   border: 1px solid #CCC;
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
-  box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.2), 0px 25px 50px 0px rgba(0, 0, 0, 0.15);
 }
 
 #employee-name {
@@ -47,7 +46,7 @@ h1 {
 }
 
 #choices {
-  background: none repeat scroll 0% 0% rgba(255, 255, 255, 0.8);
+  background: none repeat scroll 0% 0% rgba(255, 255, 255, 0.5);
   margin-right: 20px;
   padding: 10px;
   border: 1px solid #CCC;

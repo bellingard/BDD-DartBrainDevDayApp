@@ -18,7 +18,8 @@ TableElement choices = querySelector("#choices");
 
 void main() {
   initUI();
-  updateAfterLoadData();
+  hideEmployeeDetails();
+  hideChoices();
 }
 
 void initUI() {
@@ -107,6 +108,14 @@ void hideEmployeeDetails() {
   employee_details.setAttribute("style", "visibility: hidden");
 }
 
+void showChoices() {
+  choices.setAttribute("style", "visibility: visible");
+}
+
+void hideChoices() {
+  choices.setAttribute("style", "visibility: hidden");
+}
+
 void displayEmployee(Event e) {
   proposals_list.remove();
   proposals_list = new UListElement();
@@ -128,6 +137,8 @@ void displayEmployee(Event e) {
 }
 
 void updateChoices() {
+  hideChoices();
+  
   if (choices.tBodies.length > 0) {
     choices.tBodies.first.remove();
   }
@@ -164,4 +175,6 @@ void updateChoices() {
       }
     });
   });
+  
+  showChoices();
 }
