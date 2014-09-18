@@ -65,7 +65,7 @@ void updateEmployeeList() {
   if (employees_list.children.length > 0) {
     employees_list.children[0].remove();
   }
-  
+
   UListElement list = new UListElement();
   employees_list.append(list);
   company.getEmployees().forEach((e) {
@@ -110,31 +110,35 @@ void updateChoices() {
   TableSectionElement tBody = choices.createTBody();
 
   Iterable<Employee> employees = company.getEmployees();
-  
+
   // display fist line with users
   TableRowElement newLine = tBody.insertRow(-1);
   newLine.addCell().setAttribute("style", "border: none");
   employees.forEach((e) {
     newLine.addCell().text = e.getName();
   });
-  
+
   // display each proposal on a line
   company.getAllProposals().forEach((p) {
     TableRowElement newLine = tBody.insertRow(-1);
-      newLine.addCell().text = p;
-      employees.forEach((emp) {
-        newLine.addCell()
-        ..onClick.listen((Event e) {
-          TableCellElement cell = e.target;
-          if (emp.isChosen(p)) {
-            emp.unchoose(p);
-            cell.classes.remove("chosen");
-          } else {
-            emp.choose(p);
-            cell.classes.add("chosen");
-          }
-        });
-      });
+    newLine.addCell().text = p;
+    employees.forEach((emp) {
+      TableCellElement cell = newLine.addCell()..onClick.listen((Event e) {
+            TableCellElement cell = e.target;
+            if (emp.isChosen(p)) {
+              emp.unchoose(p);
+              cell.classes.remove("chosen");
+            } else {
+              emp.choose(p);
+              cell.classes.add("chosen");
+            }
+          });
+      if (emp.isChosen(p)) {
+        cell.classes.add("chosen");
+      } else {
+        cell.classes.remove("chosen");
+      }
+    });
   });
 }
 
